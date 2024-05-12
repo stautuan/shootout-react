@@ -6,15 +6,13 @@ function Shootout() {
     const [message, setMessage] = useState('');
     const [condition, setCondition] = useState('');
 
-    // Count the paces
     useEffect(() => {
-        // Renders the pace every second from 1 to 10
         const paces = setTimeout(() => {
             if (count < 10) {
                 setCount(count + 1);
                 setDisplayAllCount((counts) => [...counts, count + 1]);
             } else {
-                // Generate a delay before rendering a signal to press a key
+                // Generates a delay after 10 paces before rendering a signal to press a key
                 const randomDelay = (Math.floor(Math.random() * 5) + 1) * 1000;
                 setTimeout(() => {
                     setMessage('He draws.....');
@@ -22,7 +20,7 @@ function Shootout() {
                     const defeat = setTimeout(() => {
                         setCondition('And shoots. You are dead.');
                         window.removeEventListener('keydown', victory);
-                    }, 300);
+                    }, 300); // Time limit to press a key
 
                     function victory() {
                         clearTimeout(defeat);
